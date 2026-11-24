@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% block content %}
+<p><a href="{{ url_for('movies') }}">&larr; All movies</a></p>
+<h2>{{ m.movie_name }} <span class="muted">({{ m.release_year }})</span></h2>
+<p>{{ m.age_rating }} &middot; {{ m.movie_length }} min &middot; IMDb {{ m.imdb_rating }} &middot; rented {{ rentals }} time(s)</p>
+<p>{{ genres | map(attribute='genre_name') | join(', ') }}</p>
+<p>{{ m.movie_description }}</p>
+<h3>Cast</h3>
+<table>
+  <tr><th>Actor</th><th>Role</th></tr>
+  {% for c in cast %}<tr><td>{{ c.name }}</td><td>{{ c.role_name or '' }}</td></tr>
+  {% else %}<tr><td colspan="2" class="muted">No cast listed.</td></tr>{% endfor %}
+</table>
+{% endblock %}

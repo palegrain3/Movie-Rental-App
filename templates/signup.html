@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Create an account</h2>
+<form class="add" method="post">
+  <label>Name <input name="customer_name" maxlength="100" required></label>
+  <label>Email <input name="customer_email" type="email" maxlength="255" required></label>
+  <label>Phone <input name="customer_phone" maxlength="12" placeholder="412-555-0101" required></label>
+  <label>Password <input name="password" type="password" minlength="6" required></label>
+  <button>Sign up</button>
+</form>
+<p class="muted">Already have an account? <a href="{{ url_for('login') }}">Log in</a></p>
+{% endblock %}

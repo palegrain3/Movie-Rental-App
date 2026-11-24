@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Rentals</h2>
+{% if not customers %}<p class="muted">Add a customer on the Customers page before creating a rental.</p>{% endif %}
+<form class="add" method="post">
+  <label>Customer
+    <select name="customer_id" required>
+      {% for c in customers %}<option value="{{ c.customer_id }}">{{ c.customer_name }}</option>{% endfor %}
+    </select>
+  </label>
+  <label>Movie
+    <select name="movie_id" required>
+      {% for m in movies %}<option value="{{ m.movie_id }}">{{ m.movie_name }}</option>{% endfor %}
+    </select>
+  </label>
+  <label>Rent date <input type="date" name="rent_date" value="{{ today }}" required></label>
+  <label>Days <input type="number" name="days" value="2" min="0" required></label>
+  <button>Add rental</button>
+</form>
+<table>
+  <tr><th>#</th><th>Customer</th><th>Movie</th><th>Rented</th><th>Expires</th></tr>
+  {% for r in rentals %}
+  <tr><td>{{ r.rental_id }}</td><td>{{ r.customer_name }}</td><td>{{ r.movie_name }}</td>
+      <td>{{ r.rent_date }}</td><td>{{ r.expire_date }}</td></tr>
+  {% endfor %}
+</table>
+{% endblock %}

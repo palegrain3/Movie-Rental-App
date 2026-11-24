@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Customer login</h2>
+<form class="add" method="post">
+  <label>Email <input name="customer_email" type="email" required></label>
+  <label>Password <input name="password" type="password" required></label>
+  <button>Log in</button>
+</form>
+<p class="muted">No account? <a href="{{ url_for('signup') }}">Sign up</a></p>
+{% endblock %}
